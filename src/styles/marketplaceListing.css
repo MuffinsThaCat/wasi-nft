@@ -1,0 +1,228 @@
+.marketplace-listing-container {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  margin: 20px 0;
+  max-width: 800px;
+}
+
+.marketplace-listing-container h2 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 1.8rem;
+}
+
+.feature-description {
+  color: #555;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.listing-form {
+  background-color: white;
+  border-radius: 6px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #444;
+}
+
+.form-group select,
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+  outline: none;
+  border-color: #4d90fe;
+  box-shadow: 0 0 0 2px rgba(77, 144, 254, 0.2);
+}
+
+.auto-deletion-info {
+  display: flex;
+  align-items: flex-start;
+  background-color: #f0f7ff;
+  border-radius: 6px;
+  padding: 12px;
+  margin: 16px 0;
+}
+
+.info-icon {
+  background-color: #0066cc;
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+  font-weight: bold;
+}
+
+.auto-deletion-info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #0066cc;
+  line-height: 1.4;
+}
+
+.list-button {
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.list-button:hover {
+  background-color: #0055aa;
+}
+
+.list-button:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+.listing-status {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+/* Active listings table */
+.active-listings {
+  margin-top: 32px;
+}
+
+.active-listings h3 {
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.listings-table {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.table-header {
+  display: flex;
+  background-color: #f5f5f5;
+  padding: 12px 16px;
+  font-weight: 600;
+  color: #555;
+  border-bottom: 1px solid #ddd;
+}
+
+.listing-row {
+  display: flex;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  align-items: center;
+}
+
+.listing-row:last-child {
+  border-bottom: none;
+}
+
+.col {
+  padding-right: 12px;
+}
+
+.col.asset-name {
+  flex: 2;
+}
+
+.col.marketplace {
+  flex: 1;
+}
+
+.col.price {
+  flex: 1;
+}
+
+.col.status {
+  flex: 1;
+}
+
+.col.actions {
+  flex: 1;
+  text-align: right;
+}
+
+.status-active {
+  color: #28a745;
+}
+
+.status-sold {
+  color: #17a2b8;
+}
+
+.status-cancelled {
+  color: #6c757d;
+}
+
+.status-expired {
+  color: #dc3545;
+}
+
+.deleted-icon {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 14px;
+}
+
+.cancel-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.cancel-button:hover {
+  background-color: #c82333;
+}
+
+.view-link {
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.view-link:hover {
+  text-decoration: underline;
+}

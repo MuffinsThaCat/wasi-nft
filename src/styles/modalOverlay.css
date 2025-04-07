@@ -1,0 +1,64 @@
+/* Modal Overlay Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.app-content {
+  position: relative;
+  width: 100%;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.transfer-button {
+  background-color: #8e44ad;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.transfer-button:before {
+  content: "↔️";
+  font-size: 18px;
+}
+
+.transfer-button:hover {
+  background-color: #9b59b6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.transfer-button:disabled {
+  background-color: #d1d1d1;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 10px;
+  }
+}
