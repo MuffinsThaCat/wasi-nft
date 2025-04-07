@@ -50,7 +50,7 @@ export class EnhancedSecurityService {
     
     this.client = new LitNodeClient({
       debug: false,
-      litNetwork: 'serrano' as any // Using 'as any' to bypass type checking for demo
+      litNetwork: 'datil' // Using a supported Lit Protocol network
     });
     this.litNodePromise = this.client.connect();
   }

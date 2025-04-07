@@ -188,12 +188,26 @@ export class AssetManager {
    * Initialize the asset manager
    */
   public async initialize(): Promise<void> {
-    // Initialize Lit Protocol service
-    this.litService = new LitProtocolService(this.userId);
-    
-    // Initialize cryptographic keys (now using Lit Protocol)
-    await this.initializeKeyPair();
-    console.log('AssetManager initialized with Lit Protocol key pair');
+    try {
+      // Initialize Lit Protocol service
+      console.log('Initializing Lit Protocol service...');
+      this.litService = new LitProtocolService(this.userId);
+      
+      // Initialize cryptographic keys (now using Lit Protocol)
+      await this.initializeKeyPair();
+      console.log('AssetManager initialized with Lit Protocol key pair');
+    } catch (error) {
+      console.error('Failed to initialize Lit Protocol:', error);
+      // Still allow the application to run with limited functionality
+      alert('Warning: Some advanced features are not available because Lit Protocol could not be initialized. Basic asset management will still function.');
+      
+      // Try to initialize cryptographic keys even if Lit Protocol fails
+      try {
+        await this.initializeKeyPair();
+      } catch (keyError) {
+        console.error('Failed to initialize keys:', keyError);
+      }
+    }
   }
   
   /**
@@ -221,6 +235,7 @@ export class AssetManager {
         // For backwards compatibility, still use locally stored keys if available
         this.keyPair = storedKeyPair;
         console.log('Retrieved existing key pair from local storage');
+        return; // Successfully initialized with stored keys
       } else if (this.litService) {
         // Generate new key pair using Lit Protocol
         console.log('Generating new key pair using Lit Protocol...');
@@ -405,6 +420,8 @@ export class AssetManager {
       return metadata;
     } catch (error) {
       console.error('Error creating asset:', error);
+        storeKeyPair(this.userId, this.keyPair);
+        console.log('Generated and stored fallback key pair locally');
       throw new Error(`Failed to create asset: ${error instanceof Error ? error.message : String(error)}`);
     }
   }

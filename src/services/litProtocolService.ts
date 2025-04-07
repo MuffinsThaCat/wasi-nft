@@ -38,7 +38,7 @@ export class LitProtocolService {
     this.client = new LitNodeClient({
       debug: false,
       // Use 'serrano' as string literal and cast to any to bypass type checking
-      litNetwork: 'serrano' as any,
+      litNetwork: 'datil',
     });
     this.litNodePromise = this.client.connect();
   }
