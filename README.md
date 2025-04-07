@@ -74,63 +74,20 @@ The application is built on a modular architecture:
 - Assets are verified using cryptographic signatures
 - File content hashes ensure integrity
 
-## Future Enhancements
+## Blockchain Usage
 
-- Full blockchain integration for Ethereum, Solana, and other networks
-- IPFS/Arweave integration for decentralized storage
+- Full blockchain integration for Avalanche
+- IPFS integration for decentralized storage
 - Marketplace connector for listing assets on popular NFT marketplaces
 - Enhanced metadata standards compatibility
 - Multi-user features and collaboration tools
 
-## Purpose and Advantages Over Traditional NFT Marketplaces
 
 ### Core Purpose
 
 WASI-NFT is designed to bridge the gap between traditional files and blockchain NFTs by providing a user-controlled system for digital asset ownership and verification without requiring immediate blockchain integration.
 
 ### Key Advantages:
-
-1. **User Sovereignty and Control**
-   - Your digital assets remain in your own filesystem, not on remote servers
-   - You control your private keys locally, enhancing security
-   - No reliance on marketplace platforms that could shut down or change policies
-   - Assets can be managed offline without internet connectivity
-
-2. **Reduced Financial Barriers**
-   - No blockchain gas fees required to create or transfer assets
-   - No marketplace commissions on creation or sales
-   - Optional path to blockchain - move assets to chains only when desired
-   - Avoid cryptocurrency volatility until you choose to enter that ecosystem
-
-3. **Enhanced Privacy**
-   - No requirement to connect wallets to marketplaces
-   - Selective disclosure of ownership information
-   - No public blockchain record unless you explicitly choose to create one
-   - Your collection remains private by default
-
-4. **Verifiable Authenticity Without Blockchain**
-   - Assets are cryptographically signed using Ed25519 signatures
-   - Ownership can be verified without blockchain transactions
-   - Social media ownership verification through steganographic watermarking
-   - Provenance tracking works even when images are shared off-platform
-
-5. **Technical Innovation**
-   - Leverages modern browser capabilities (File System Access API)
-   - Uses Lit Protocol for decentralized key management and access control
-   - WebAssembly implementation provides near-native performance
-   - Designed with graceful fallbacks for compatibility across environments
-
-6. **Future-Proof Design**
-   - Blockchain-ready when you need it
-   - Assets can be registered on blockchains at any point
-   - Clear upgrade path to more decentralized systems
-   - Not locked into any specific blockchain ecosystem
-
-7. **Ownership Beyond the Marketplace**
-   - Social media verification tools protect your assets "in the wild"
-   - Perceptual hashing detects similar/copied images even after modifications
-   - Public-facing verification tools allow anyone to check authenticity
-   - Maintains verifiable provenance even outside controlled environments
 
 WASI-NFT provides a fundamentally different approach to digital asset management by focusing on user ownership first and blockchain integration second, inverting the typical NFT marketplace model that puts the blockchain at the center of the experience.
 
