@@ -10,6 +10,8 @@ A browser-based application for creating, managing, and verifying unique digital
 - **Export & Share**: Export assets for sharing with others
 - **Import Verification**: Verify and import assets shared by others
 - **Blockchain Ready**: Optional bridge to register assets on blockchain networks
+- **Compressed NFTs**: Efficient on-chain representation of large asset collections
+- **AI Data NFTs**: Specialized support for AI training and research datasets
 
 ## How It Works
 
@@ -20,6 +22,36 @@ This application leverages modern web technologies to create a hybrid approach t
 3. **Ed25519 Signatures**: Cryptographically signs each asset to ensure authenticity
 4. **Local-First Architecture**: Everything works offline with assets under your control
 5. **Optional Blockchain Bridge**: Register selected assets on blockchains when desired
+6. **Merkle Tree Compression**: Efficiently represent large collections with minimal on-chain storage
+7. **AI Data Attribution**: Specialized metadata and verification for AI training datasets
+
+## AI Data NFT Support
+
+WASI-NFT provides specialized support for AI training and research data:
+
+### Features
+
+- **AI Dataset Creation**: Create and manage collections of training data with appropriate metadata
+- **Data Provenance**: Cryptographically verify the source and authenticity of AI training data
+- **Compressed Data NFTs**: Efficiently register large datasets on blockchains at minimal cost
+- **Attribution Tracking**: Track usage of data in AI models with proper attribution
+- **Licensing Controls**: Specify and enforce usage permissions for AI training data
+
+### Use Cases
+
+- **AI Training Data Markets**: Create verifiable marketplaces for high-quality training data
+- **Research Data Sharing**: Share research datasets with provenance guarantees
+- **Model Attribution**: Track which datasets were used to train specific AI models
+- **Data Quality Verification**: Verify the integrity and origins of datasets
+
+### Implementation
+
+The AI Data NFT system uses our compressed NFT technology to efficiently represent large datasets as collections. This allows for:
+
+1. **Off-chain Storage**: Data is primarily stored in the user's filesystem
+2. **On-chain Verification**: Only the Merkle root and minimal verification data goes on-chain
+3. **Proof of Inclusion**: Verify individual data items are part of a larger dataset
+4. **Efficient Transfers**: Transfer ownership of entire datasets with a single transaction
 
 ## Setup Instructions
 

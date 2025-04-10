@@ -28,6 +28,8 @@ export class BrowserFileSystem implements FileSystemInterface {
    */
   async selectDirectory(): Promise<DirectoryHandle | null> {
     try {
+      console.log('Select directory method called');
+      
       // Check if the File System Access API is available
       if (!('showDirectoryPicker' in window)) {
         console.error('File System Access API is not available in this browser');
@@ -35,6 +37,13 @@ export class BrowserFileSystem implements FileSystemInterface {
         throw new Error('File System Access API is not supported in this browser');
       }
 
+      console.log('File System Access API is available');
+      console.log('Window object state:', {
+        hasShowDirectoryPicker: 'showDirectoryPicker' in window,
+        windowObject: typeof window,
+        documentSecure: window.isSecureContext,
+      });
+      
       console.log('Attempting to show directory picker dialog...');
       alert('You will now be prompted to select a directory for storing your digital assets. Please select a directory with write permissions.');
       
@@ -42,9 +51,16 @@ export class BrowserFileSystem implements FileSystemInterface {
       // Some browsers might not support all options
       let directoryHandle;
       try {
-        // Most basic version of directory picker to maximize compatibility
-        directoryHandle = await window.showDirectoryPicker();
-        console.log('Directory selected successfully:', directoryHandle);
+        console.log('Calling showDirectoryPicker...');
+        try {
+          // Most basic version of directory picker to maximize compatibility
+          directoryHandle = await window.showDirectoryPicker();
+          console.log('Directory selected successfully:', directoryHandle);
+        } catch (dirPickerError) {
+          console.error('Error in showDirectoryPicker:', dirPickerError);
+          alert(`Error selecting directory: ${dirPickerError.message}`);
+          throw dirPickerError;
+        }
         
         // Verify we can access files by requesting permission explicitly
         try {

@@ -619,13 +619,38 @@ export class BlockchainIntegration {
    * Get address URL for the explorer
    */
   public getAddressUrl(address: string): string {
-    const networkConfig = this.config.networks[this.currentNetwork];
+    const network = this.config.networks[this.currentNetwork];
+    return `${network.explorerUrl}/address/${address}`;
+  }
+
+  /**
+   * Verify a transaction on the blockchain
+   * @param txHash Transaction hash to verify
+   * @returns Promise with verification result
+   */
+  async verifyTransaction(txHash: string): Promise<boolean> {
+    if (!txHash) return false;
     
-    if (!networkConfig) {
-      throw new Error(`Network ${this.currentNetwork} not found in configuration`);
+    try {
+      // Initialize provider if not already done
+      if (!this.provider) {
+        this.initializeProvider();
+      }
+      
+      if (!this.provider) {
+        console.error('No provider available for transaction verification');
+        return false;
+      }
+      
+      // Get transaction receipt
+      const receipt = await this.provider.getTransactionReceipt(txHash);
+      
+      // Check if transaction exists and was successful
+      return receipt != null && receipt.status === 1;
+    } catch (error) {
+      console.error('Error verifying transaction:', error);
+      return false;
     }
-    
-    return `${networkConfig.explorerUrl}/address/${address}`;
   }
 }
 

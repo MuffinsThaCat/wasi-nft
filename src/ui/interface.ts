@@ -241,9 +241,13 @@ function renderAssetGallery(assetManager: AssetManager, assets: AssetMetadata[])
     let previewHtml = '';
     
     if (asset.mediaType.startsWith('image/')) {
-      previewHtml = `<div class="asset-preview image-preview" style="background-color: #f0f0f0; height: 180px; display: flex; align-items: center; justify-content: center;">
-        <span style="font-size: 48px;">🖼️</span>
+      // Create an actual image element for preview
+      previewHtml = `<div class="asset-preview image-preview" style="background-color: #f0f0f0; height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+        <img src="#" alt="${asset.title}" class="preview-image" data-asset-id="${asset.id}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
       </div>`;
+      
+      // After rendering, we'll load the actual image content
+      setTimeout(() => loadAssetPreview(assetManager, asset.id), 10);
     } else if (asset.mediaType.startsWith('video/')) {
       previewHtml = `<div class="asset-preview video-preview" style="background-color: #f0f0f0; height: 180px; display: flex; align-items: center; justify-content: center;">
         <span style="font-size: 48px;">🎬</span>
@@ -274,6 +278,53 @@ function renderAssetGallery(assetManager: AssetManager, assets: AssetMetadata[])
     
     container.appendChild(card);
   });
+}
+
+/**
+ * Load image preview for an asset
+ */
+async function loadAssetPreview(assetManager: AssetManager, assetId: string): Promise<void> {
+  try {
+    // Get the asset data
+    const asset = await assetManager.getAsset(assetId);
+    if (!asset || !asset.mediaType.startsWith('image/')) {
+      return;
+    }
+    
+    // Get the file data
+    const fileData = await assetManager.getAssetContent(assetId);
+    if (!fileData) {
+      console.error('Could not load asset file data for preview');
+      return;
+    }
+    
+    // Create a blob URL for the image
+    const blob = new Blob([fileData], { type: asset.mediaType });
+    const imageUrl = URL.createObjectURL(blob);
+    
+    // Find all preview image elements for this asset and set the source
+    const previewImages = document.querySelectorAll(`.preview-image[data-asset-id="${assetId}"]`);
+    previewImages.forEach((img: Element) => {
+      if (img instanceof HTMLImageElement) {
+        img.src = imageUrl;
+        
+        // Add load error handling
+        img.onerror = () => {
+          console.error('Failed to load image preview for asset:', assetId);
+          img.src = ''; // Clear the source
+          img.alt = 'Image preview unavailable';
+          img.style.display = 'none';
+          img.parentElement?.querySelector('span')?.remove(); // Remove any existing placeholder
+          const placeholder = document.createElement('span');
+          placeholder.style.fontSize = '48px';
+          placeholder.textContent = '🖼️';
+          img.parentElement?.appendChild(placeholder);
+        };
+      }
+    });
+  } catch (error) {
+    console.error('Error loading asset preview:', error);
+  }
 }
 
 /**
