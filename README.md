@@ -129,7 +129,9 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under a proprietary license. All rights reserved.
+
+**IMPORTANT**: This software is proprietary and confidential. Use is subject to the restrictions outlined in the LICENSE file. The blockchain-based data attribution and tokenization mechanisms are protected intellectual property and may not be implemented or replicated without explicit written permission.
 
 ## Acknowledgments
 
