@@ -120,7 +120,8 @@ export interface AIDataItem {
  */
 export interface AIDataset {
   metadata: AIDatasetMetadata;
-  items?: string[]; // Array of item IDs
+  items?: string[];
+  merkleRoot?: string; // Optional direct access to merkleRoot from metadata for compatibility
 }
 
 /**
